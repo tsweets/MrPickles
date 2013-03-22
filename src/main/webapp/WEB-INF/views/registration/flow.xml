@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <on-start>
+        <evaluate expression="appUserService.createNewUser()" result="flowScope.newUser" />
+    </on-start>
+
+    <view-state id="registration-step1" view="registration/registration-step1" model="newUser">
+    	<transition on="success" to="registration-step2"/>
+    	<transition on="cancel" to="end-state"/>
+    </view-state>
+    
+    <view-state id="registration-step2" view="registration/registration-step2" model="newUser">
+    	<transition on="create" to="insert-user"/>
+    </view-state>
+
+    <action-state id="insert-user">
+        <evaluate expression="appUserService.saveAppUser(newUser)"/>
+        <transition to="end-state"/>
+    </action-state>
+
+    <!-- A sample end state -->
+    <end-state id="end-state" view="registration/end-state"/>
+	
+</flow>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="home" template="/WEB-INF/layouts/web-bootstrap.jsp">
+      <put-attribute name="header"  value="/WEB-INF/views/common/header.web.jsp" />
+      <put-attribute name="footer"  value="/WEB-INF/views/common/footer.web.jsp" />
+      <put-attribute name="menu"    value="/WEB-INF/views/common/menu.web.jsp" />
+      <put-attribute name="message" value="/WEB-INF/views/common/message.web.jsp" />
+  </definition>
+  <definition name="sidenav" template="/WEB-INF/layouts/web-bootstrap-sidenav.jsp">
+        <put-attribute name="header"  value="/WEB-INF/views/common/header.web.jsp" />
+        <put-attribute name="footer"  value="/WEB-INF/views/common/footer.web.jsp" />
+        <put-attribute name="menu"    value="/WEB-INF/views/common/menu.web.jsp" />
+        <put-attribute name="message" value="/WEB-INF/views/common/message.web.jsp" />
+    </definition>
+
+    <definition name="default" template="/WEB-INF/layouts/web-bootstrap.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/common/header.web.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.web.jsp" />
+    <put-attribute name="message" value="/WEB-INF/views/common/message.web.jsp" />
+
+  </definition>
+<!--
+    <definition name="default" template="/WEB-INF/layouts/default.jspx">
+        <put-attribute name="header" value="/WEB-INF/views/header.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jspx" />
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
+    </definition>
+-->
+
+<!--
+  <definition name="public" template="/WEB-INF/layouts/default.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/header.jspx" />
+    <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
+  </definition>
+-->
+    <definition name="public" template="/WEB-INF/layouts/web-bootstrap.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/common/header.web.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/common/footer.web.jsp" />
+        <put-attribute name="message" value="/WEB-INF/views/common/message.web.jsp" />
+
+    </definition>
+
+</tiles-definitions>

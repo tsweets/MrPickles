@@ -1,0 +1,46 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:form="http://www.springframework.org/tags/form" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <spring:message var="title" code="webflow_state2_title" htmlEscape="false" />
+    <h1>${fn:escapeXml(title)}</h1>
+    <p>
+      <spring:message code="webflow_state2_message" />
+    </p>
+      <form:form modelAttribute="newUser" action="${flowExecutionUrl}">
+          <div class="">
+              <table>
+                  <tr>
+                      <td>First Name</td>
+                      <td>${newUser.firstName}</td>
+                  </tr>
+                  <tr>
+                      <td>Last Name</td>
+                      <td>${newUser.lastName}</td>
+                  </tr>
+                  <tr>
+                      <td>Username</td>
+                      <td>${newUser.firstName}</td>
+                  </tr>
+                  <tr>
+                      <td>DOB</td>
+                      <td>${newUser.dob}</td>
+                  </tr>
+                  <tr>
+                      <td>Mobile Phone</td>
+                      <td>${newUser.phoneMobile}</td>
+                  </tr>
+                  <tr>
+                      <td>Status</td>
+                      <td>${newUser.status}</td>
+                  </tr>
+              </table>
+
+          </div>
+      <div class="submit">
+        <spring:message var="create" code="button_create" htmlEscape="false" />
+        <input type="submit" id="create" name="_eventId_create" value="${fn:escapeXml(create)}" />
+      </div>
+    </form:form>
+</div>

@@ -1,0 +1,9 @@
+To reach the author you can email me at tony.sweets at gmail dot com
+Maven Instructions:
+
+Simple Compile: mvn compile
+
+Deploy to included Jetty Server: mvn jetty:run
+
+Open Web Browser to http://localhost:8080
+

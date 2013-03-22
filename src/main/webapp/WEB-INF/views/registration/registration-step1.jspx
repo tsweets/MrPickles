@@ -1,0 +1,64 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:form="http://www.springframework.org/tags/form" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <spring:message var="title" code="webflow_state1_title" htmlEscape="false" />
+    <h1>${fn:escapeXml(title)}</h1>
+    <p>
+      <spring:message code="webflow_state1_message" />
+    </p>
+    <form:form modelAttribute="newUser" action="${flowExecutionUrl}">
+        <div class="">
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td><form:input path="userName"/></td>
+                    <td><form:errors path="userName" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><form:input path="userHash"/></td>
+                    <td><form:errors path="userHash" /></td>
+                </tr>
+
+
+                <tr>
+                    <td>First Name</td>
+                    <td><form:input path="firstName"/></td>
+                    <td><form:errors path="firstName" /></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><form:input path="lastName"/></td>
+                    <td><form:errors path="lastName" /></td>
+                </tr>
+<!--
+                <tr>
+                    <td>DOB</td>
+                    <td><form:input path="dob"/></td>
+                    <td><form:errors path="dob" /></td>
+                </tr>
+-->
+                <tr>
+                    <td>Mobile Phone</td>
+                    <td><form:input path="phoneMobile"/></td>
+                    <td><form:errors path="phoneMobile" /></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>${newUser.status}</td>
+                </tr>
+
+            </table>
+
+        </div>
+        <div class="submit">
+        <spring:message var="cancel" code="button_cancel" htmlEscape="false" />
+        <spring:message var="proceed" code="button_proceed" htmlEscape="false" />
+        <input type="submit" class="btn" id="cancel" name="_eventId_cancel" value="${fn:escapeXml(cancel)}" />
+        <input type="submit" class="btn" id="success" name="_eventId_success" value="${fn:escapeXml(proceed)}" />
+
+      </div>
+    </form:form>
+</div>

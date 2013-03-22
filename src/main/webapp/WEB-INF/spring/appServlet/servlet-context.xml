@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+    <context:component-scan base-package="org.beer30.mrpickles.web" />
+
+
+    <!-- Register "global" interceptor beans to apply to all registered HandlerMappings -->
+    <mvc:interceptors>
+<!--
+        <bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
+-->
+        <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="lang"/>
+    </mvc:interceptors>
+    <!-- Resolves localized messages*.properties and application.properties files in the application to allow for internationalization.
+    The messages*.properties files translate Roo generated messages which are part of the admin interface, the
+    application.properties resource bundle localizes all application specific messages such as entity names and menu items. -->
+    <beans:bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource" p:basenames="WEB-INF/i18n/messages,WEB-INF/i18n/application" p:fallbackToSystemLocale="false"/>
+
+    <!-- Store preferred language configuration in a cookie -->
+    <beans:bean class="org.springframework.web.servlet.i18n.CookieLocaleResolver" id="localeResolver" p:cookieName="locale"/>
+
+    <!-- Resolves localized <theme_name>.properties files in the classpath to allow for theme support -->
+    <beans:bean class="org.springframework.ui.context.support.ResourceBundleThemeSource" id="themeSource"/>
+
+    <!-- Store preferred theme configuration in a cookie -->
+    <beans:bean class="org.springframework.web.servlet.theme.CookieThemeResolver" id="themeResolver" p:cookieName="theme" p:defaultThemeName="standard"/>
+
+
+
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+
+
+    <!-- Apache Tiles Config -->
+    <beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver" p:order="0">
+        <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+    </beans:bean>
+
+    <beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" id="tilesConfigurer">
+        <beans:property name="definitions">
+            <beans:list>
+                <beans:value>/WEB-INF/layouts/layouts.xml</beans:value>
+                <beans:value>/WEB-INF/views/**/views.xml</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+
+    <!-- Web Flow Config -->
+    <!--Maps request paths to flows in the flowRegistry-->
+    <beans:bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+        <beans:property name="order" value="0"/>
+        <beans:property name="flowRegistry" ref="flowRegistry"/>
+        <!--
+            <property name="interceptors">
+                    <array>
+                        <ref bean="conversionServiceExposingInterceptor"/>
+                    </array>
+                </property>
+        -->
+    </beans:bean>
+
+    <!-- Dispatches requests mapped to flows to FlowHandler implementations -->
+    <beans:bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+        <beans:property name="flowExecutor" ref="flowExecutor"/>
+    </beans:bean>
+
+    <!-- Executes flows: the entry point into the Spring Web Flow system -->
+    <webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry"/>
+
+    <!-- The registry of executable flow definitions -->
+    <webflow:flow-registry base-path="/WEB-INF/views" flow-builder-services="flowBuilderServices" id="flowRegistry">
+        <webflow:flow-location-pattern value="/**/flow.xml"/>
+    </webflow:flow-registry>
+
+    <!-- Plugs in a custom creator for Web Flow views -->
+    <webflow:flow-builder-services development="true" id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator"/>
+
+    <beans:bean class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator" id="mvcViewFactoryCreator">
+        <beans:property name="viewResolvers" ref="tilesViewResolver"/>
+    </beans:bean>
+
+
+</beans:beans>
