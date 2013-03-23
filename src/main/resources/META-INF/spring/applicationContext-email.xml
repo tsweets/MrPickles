@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:property-placeholder location="classpath:/META-INF/properties/mr-pickles.properties"/>
+
+    <bean id="mrPicklesMailSender" class="org.beer30.mrpickles.common.email.EmailSender">
+        <property name="mailSender" ref="mailSender" />
+        <property name="overrideEmail" value="${mailSender.override}" />
+    </bean>
+
+    <!-- Green Mail Setting for use of the embedded test email server-->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.debug">false</prop>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.port">3025</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.user">test@mail.extern</prop>
+                <prop key="mail.smtp.host">localhost</prop>
+                <prop key="mail.smtp.from">test@mail.extern</prop>
+            </props>
+        </property>
+        <property name="username" value="test"/>
+        <property name="password" value="xxx"/>
+        <property name="defaultEncoding" value="utf8" />
+    </bean>
+    <!-- Real Email Server Settings for when you want to send real emails -->
+<!--
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mailSender.host}" />
+        <property name="port" value="${mailSender.port}" />
+        <property name="username" value="${mailSender.username}" />
+        <property name="password" value="${mailSender.password}" />
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+            </props>
+
+        </property>
+    </bean>
+-->
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
+    </bean>
+</beans>
