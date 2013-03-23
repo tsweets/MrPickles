@@ -22,6 +22,7 @@ Frameworks. Here's a sample list of Technologies used:
 - Spring MVC
 - Spring Web Flow
 - LogBack
+- Velocity Templated Emails
 - Some other cool things
 
 This showcase is meant to be self contained. All the is needed to run it is Java 6+ and Maven Installed. If you are on
