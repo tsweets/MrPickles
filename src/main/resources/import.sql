@@ -1,0 +1,1 @@
+insert into app_user (USER_NAME,FIRST_NAME,LAST_NAME,EMAIL,DOB,STATUS) values ("admin","Mister","Pickles","mpickle@example.com","1900-01-01","ACTIVE");
