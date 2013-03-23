@@ -31,6 +31,7 @@ public class AppUserServiceTest {
         AppUser user = appUserService.createNewUser();
         user.setFirstName("Tony");
         user.setLastName("Sweets");
+        user.setUserName("tsweets");
         user.setPhoneMobile("303-555-5555");
         user.setStatus(UserStatus.ACTIVE);
         user.setUserHash("password");
@@ -42,6 +43,8 @@ public class AppUserServiceTest {
 
         AppUser foundUser = appUserService.findAppUser(id);
         Assert.assertEquals("Tony",user.getFirstName());
+
+        System.out.println(foundUser.toString());
 
 
     }
