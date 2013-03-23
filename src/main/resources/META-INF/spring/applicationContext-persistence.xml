@@ -18,14 +18,9 @@
                     http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
                     http://www.springframework.org/schema/tx
                     http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-    <!--
-        This will automatically locate any and all property files you have
-        within your classpath, provided they fall under the META-INF/spring
-        directory. The located property files are parsed and their values can
-        then be used within application context files in the form of
-        ${propertyKey}.
-    -->
-    <context:property-placeholder location="classpath*:META-INF/properties/*.properties"/>
+
+
+    <context:property-placeholder location="classpath:META-INF/properties/mr-pickles.properties"/>
 
     <!-- Single Connection Datasource -->
 <!--
@@ -68,6 +63,10 @@
 
         <property name="jpaProperties">
             <props>
+<!--
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+-->
+
                 <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
                 <!-- value="create" to build a new database on each run; value="update" to modify an existing database; value="create-drop" means the same as "create" but also drops tables when Hibernate closes; value="validate" makes no changes to the database -->
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
