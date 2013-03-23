@@ -1,5 +1,7 @@
 package org.beer30.mrpickles.domain.entity;
 
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.beer30.mrpickles.domain.enums.UserStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,12 +23,15 @@ public class AppUser implements Serializable {
     private String email;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private UserStatus status;
 
     private String lastName;
 
     private String firstName;
 
+    @NotNull
+    @Column(unique = true)
     private String userName;
 
 
@@ -116,9 +121,6 @@ public class AppUser implements Serializable {
         this.dob = dob;
     }
 
-	/*public String toString() {
-        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-    }*/
     @Basic
     private String phoneMobile;
 
@@ -128,6 +130,11 @@ public class AppUser implements Serializable {
 
     public void setPhoneMobile(String phoneMobile) {
         this.phoneMobile = phoneMobile;
+    }
+
+
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
 }
