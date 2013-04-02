@@ -46,36 +46,36 @@
         <property name="minEvictableIdleTimeMillis" value="1800000"/>
     </bean>
 
-
-    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <tx:annotation-driven/>
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="emf" />
     </bean>
 
+<!--
     <bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence" />
+-->
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="persistenceUnitName" value="MrPickles-Persistence-Unit"/>
-        <property name="persistenceProvider" ref="persistenceProvider" />
+        <property name="persistenceUnitName" value="jpa.mr-pickles"/>
+
+        <!--
+                <property name="persistenceUnitName" value="MrPickles-Persistence-Unit"/>
+                <property name="persistenceProvider" ref="persistenceProvider" />
+        -->
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
         <property name="packagesToScan" value="org.beer30.mrpickles.domain" />
-
         <property name="jpaProperties">
             <props>
-<!--
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
--->
-
-                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                <!-- value="create" to build a new database on each run; value="update" to modify an existing database; value="create-drop" means the same as "create" but also drops tables when Hibernate closes; value="validate" makes no changes to the database -->
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
-                <prop key="hibernate.max_fetch_depth">3</prop>
-                <prop key="hibernate.shoe_sql">true</prop>
-                <prop key="hibernate.jdbc.fetch_size">50</prop>
-                <prop key="hibernate.jdbc.batch_size">10</prop>
-                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-                <prop key="hibernate.connection.charSet">UTF-8"</prop>
+                <!-- Properties for Hibernate Envers -->
+                <prop key="org.hibernate.envers.audit_table_suffix">_AUDIT</prop>
+                <prop key="org.hibernate.envers.revision_field_name">AUDIT_REVISION</prop>
+                <prop key="org.hibernate.envers.revision_type_field_name">ACTION_TYPE</prop>
+                <prop key="org.hibernate.envers.audit_strategy">org.hibernate.envers.strategy.ValidityAuditStrategy</prop>
+                <prop key="org.hibernate.envers.audit_strategy_validity_end_rev_field_name"> AUDIT_REVISION_END</prop>
+                <prop key="org.hibernate.envers.audit_strategy_validity_store_revend_timestamp">True</prop>
+                <prop key="org.hibernate.envers.audit_strategy_validity_revend_timestamp_field_name">AUDIT_REVISION_END_TS</prop>
             </props>
         </property>
     </bean>
@@ -83,7 +83,11 @@
     <context:annotation-config/>
     <context:component-scan base-package="org.beer30.mrpickles.domain" />
 
-    <jpa:repositories base-package="org.beer30.mrpickles.domain.repository" entity-manager-factory-ref="emf" transaction-manager-ref="txManager" />
+    <jpa:repositories base-package="org.beer30.mrpickles.domain.repository" entity-manager-factory-ref="emf" transaction-manager-ref="transactionManager" />
+    <jpa:auditing auditor-aware-ref="auditorAwareBean"/>
+    <bean id="auditorAwareBean" class="org.beer30.mrpickles.AuditorAwareBean"/>
+
+
 
     <!-- End Persistence Config -->
 </beans>
