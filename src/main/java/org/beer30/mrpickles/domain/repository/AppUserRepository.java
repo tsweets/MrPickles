@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * Date: 3/19/13
  * Time: 5:11 PM
  */
-@Repository("appUserRepository")
+@Repository
 public interface AppUserRepository extends CrudRepository<AppUser,Long> {
 
 }

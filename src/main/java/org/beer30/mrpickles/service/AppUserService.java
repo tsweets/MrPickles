@@ -22,11 +22,13 @@ public interface AppUserService {
 	public abstract List<AppUser> findAppUserEntries(int firstResult, int maxResults);
 
 
-	public abstract void saveAppUser(AppUser appUser);
+	public abstract AppUser saveAppUser(AppUser appUser);
 
 
 	public abstract AppUser updateAppUser(AppUser appUser);
 
     public abstract AppUser createNewUser();
+
+
 
 }

@@ -18,6 +18,7 @@ public class AppUserServiceImpl implements AppUserService, Serializable {
     @Autowired
     private AppUserRepository appUserRepository;
 
+
 	public long countAllAppUsers() {
         throw new UnsupportedOperationException("Implement me!");
     }
@@ -38,8 +39,8 @@ public class AppUserServiceImpl implements AppUserService, Serializable {
         throw new UnsupportedOperationException("Implement me!");
     }
 
-	public void saveAppUser(AppUser appUser) {
-       appUserRepository.save(appUser);
+	public AppUser saveAppUser(AppUser appUser) {
+       return appUserRepository.save(appUser);
     }
 
 	public AppUser updateAppUser(AppUser appUser) {
@@ -52,4 +53,7 @@ public class AppUserServiceImpl implements AppUserService, Serializable {
         user.setStatus(UserStatus.ACTIVE);
         return user;
     }
+
+
+
 }

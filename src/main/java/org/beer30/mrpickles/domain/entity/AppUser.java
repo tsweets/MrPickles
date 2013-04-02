@@ -3,6 +3,10 @@ package org.beer30.mrpickles.domain.entity;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.beer30.mrpickles.domain.enums.UserStatus;
+import org.hibernate.annotations.Type;
+import org.hibernate.envers.Audited;
+import org.joda.time.DateTime;
+import org.springframework.data.domain.Auditable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,11 +16,62 @@ import java.util.Date;
 
 
 @Entity
-public class AppUser implements Serializable {
+@Audited   // Use @Audited to Enable Hibernate Envers
+public class AppUser implements Auditable<String,Long>, Serializable {
     private static final long serialVersionUID = 3398394021253290285L;
 
     public AppUser() {
     }
+
+    // Audit fields
+    private String createdBy;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    private DateTime createdDate;
+    private String lastModifiedBy;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    private DateTime lastModifiedDate;
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public DateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(DateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
+    }
+
+    public DateTime getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(DateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+    @Transient
+    public boolean isNew() {
+        if (id == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     private String userHash;
 

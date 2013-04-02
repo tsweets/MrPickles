@@ -25,6 +25,9 @@ public class AppUserServiceTest {
     @Autowired
     AppUserService appUserService;
 
+    @Autowired
+    AuditHistoryService auditHistoryService;
+
     @Test
     public void testCreatingAUser(){
 
@@ -43,8 +46,15 @@ public class AppUserServiceTest {
 
         AppUser foundUser = appUserService.findAppUser(id);
         Assert.assertEquals("Tony",user.getFirstName());
-
         System.out.println(foundUser.toString());
+        Assert.assertNotNull(user.getCreatedDate());
+
+        foundUser.setEmail("tony2@example.com");
+        appUserService.saveAppUser(foundUser); // Should create a history record
+
+        AppUser auditUser = auditHistoryService.findAuditByRevision(AppUser.class,2l,1);
+        Assert.assertNotNull(auditUser);
+        System.out.println(auditUser.toString());
 
 
     }
