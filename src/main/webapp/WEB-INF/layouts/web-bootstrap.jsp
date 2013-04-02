@@ -51,6 +51,10 @@
 <script type="text/javascript" src="/resources/js/jquery/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/resources/js/jquery/additional-methods.min.js"></script>
 <script type="text/javascript" src="/resources/js/jquery/jquery.validate.bootstrapfix.js"></script>
+<script type="text/javascript" src="/resources/js/jquery/jquery.ga.js"></script>
+<script type="text/javascript">
+    $(document).ready( function() { $.ga.load("UA-XXXXXXXX-X"); } );
+</script>
 
 </body>
 </html>
