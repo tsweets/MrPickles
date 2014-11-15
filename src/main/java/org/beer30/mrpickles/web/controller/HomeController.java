@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 
-@RequestMapping("/home/**")
+@RequestMapping("/home")
 @Controller
 public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -23,12 +23,24 @@ public class HomeController {
     public void post(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     }
 
-    @RequestMapping
+    @RequestMapping("/")
     public String index(Model model,Principal principal) {
         logger.debug("* * * * * * * * * * * * * * Home Controller - Enter * * * * * * * * * * * * * *");
         AppUser appUser = new AppUser();
         appUser.setUserName(principal.getName());
         model.addAttribute("appUser",appUser);
+        model.addAttribute("logout","/resources/j_spring_security_logout");
         return "home/index";
+    }
+
+
+    @RequestMapping("/help")
+    public String help(Model model,Principal principal) {
+        logger.debug("* * * * * * * * * * * * * * Help Page - Enter * * * * * * * * * * * * * *");
+        AppUser appUser = new AppUser();
+        appUser.setUserName(principal.getName());
+        model.addAttribute("appUser",appUser);
+        model.addAttribute("logout","/resources/j_spring_security_logout");
+        return "home/help";
     }
 }

@@ -11,6 +11,7 @@
     </view-state>
     
     <view-state id="registration-step2" view="registration/registration-step2" model="newUser">
+        <transition on="back" to="registration-step1" />
     	<transition on="create" to="insert-user"/>
     </view-state>
 
@@ -19,7 +20,6 @@
         <transition to="end-state"/>
     </action-state>
 
-    <!-- A sample end state -->
     <end-state id="end-state" view="registration/end-state"/>
 	
 </flow>

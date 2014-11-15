@@ -5,6 +5,12 @@
   <spring:message var="title" code="webflow_endstate_title" htmlEscape="false" />
     <h1>${fn:escapeXml(title)}</h1>
     <p>
-      <spring:message code="webflow_endstate_message" />
+        <spring:message code="webflow_endstate_message" />
     </p>
+
+    <ol class="step-progress" data-step-progress-steps="3">
+        <li class="step-progress-done">Capture Data</li>
+        <li class="step-progress-done">Verify</li>
+        <li class="step-progress-done">Done</li>
+    </ol>
 </div>

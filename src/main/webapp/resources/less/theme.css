@@ -1,0 +1,136 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+html,
+body {
+  height: 100%;
+  background-image: url(../images/brillant.png);
+  padding-top: 40px;
+  font-family: 'Lato', sans-serif;
+}
+footer {
+  padding: 17px 0 18px 0;
+  border-top: 1px solid #eee;
+}
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -73px;
+}
+.push {
+  height: 73px;
+}
+.wrapper > .container {
+  padding-top: 70px;
+}
+.signin-pad {
+  padding: 15px;
+  padding-bottom: 0px;
+}
+.btn-space {
+  margin: 10px 2px 2px 5px;
+}
+.mrp-topnav {
+  background: #4d5b76;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #4d5b76), color-stop(1, #6c7a95));
+  background: -ms-linear-gradient(bottom, #4d5b76, #6c7a95);
+  background: -moz-linear-gradient(center bottom, #4d5b76 0%, #6c7a95 100%);
+  background: -o-linear-gradient(bottom, #4d5b76, #6c7a95);
+  filter: progid:dximagetransform.microsoft.gradient(startColorStr='@primary-blue', EndColorStr='@secondary-blue');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='@secondary-blue',EndColorStr='@primary-blue')";
+  padding: 0em 1em;
+  margin: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 0px;
+  border-bottom: none;
+  height: 40px;
+}
+.navbar-default .navbar-nav > li > a {
+  text-shadow: none;
+  color: #fcfcfc;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  text-shadow: none;
+  color: #ffdbaf;
+}
+.navbar-default .navbar-brand {
+  text-shadow: none;
+  color: #fcfcfc;
+}
+.navbar-default .navbar-brand:hover {
+  text-shadow: none;
+  color: #ffdbaf;
+}
+ol.step-progress {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+ol.step-progress li {
+  display: inline-block;
+  text-align: center;
+  line-height: 3em;
+}
+ol.step-progress li.step-progress-done {
+  color: black;
+  border-bottom: 4px solid yellowgreen;
+}
+ol.step-progress li.step-progress-todo {
+  color: silver;
+  border-bottom: 4px solid silver;
+}
+ol.step-progress li:after {
+  content: "\00a0\00a0";
+}
+ol.step-progress li:before {
+  position: relative;
+  bottom: -2.5em;
+  float: left;
+  left: 50%;
+  line-height: 1em;
+}
+ol.step-progress li.step-progress-done:before {
+  content: "\2713";
+  color: white;
+  background-color: yellowgreen;
+  height: 1.2em;
+  width: 1.2em;
+  line-height: 1.2em;
+  border: none;
+  border-radius: 1.2em;
+}
+ol.step-progress li.step-progress-todo:before {
+  content: "\039F";
+  color: silver;
+  background-color: white;
+  font-size: 1.5em;
+  bottom: -1.6em;
+}
+ol.step-progress[data-step-progress-steps="2"] li {
+  width: 49%;
+}
+ol.step-progress[data-step-progress-steps="3"] li {
+  width: 33%;
+}
+ol.step-progress[data-step-progress-steps="4"] li {
+  width: 24%;
+}
+ol.step-progress[data-step-progress-steps="5"] li {
+  width: 19%;
+}
+ol.step-progress[data-step-progress-steps="6"] li {
+  width: 16%;
+}
+ol.step-progress[data-step-progress-steps="7"] li {
+  width: 14%;
+}
+ol.step-progress[data-step-progress-steps="8"] li {
+  width: 12%;
+}
+ol.step-progress[data-step-progress-steps="9"] li {
+  width: 11%;
+}

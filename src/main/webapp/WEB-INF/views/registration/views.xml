@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
+<!-- Note this short hand works but my IDE doesn't like it. So I rather have my IDE completion/lookup features than save 6 lines of code
     <definition extends="default" name="registration/*">
         <put-attribute name="body" value="/WEB-INF/views/registration/{1}.jspx"/>
+    </definition>
+-->
+    <definition extends="default" name="registration/registration-step1">
+        <put-attribute name="body" value="/WEB-INF/views/registration/registration-step1.jspx"/>
+    </definition>
+    <definition extends="default" name="registration/registration-step2">
+        <put-attribute name="body" value="/WEB-INF/views/registration/registration-step2.jspx"/>
+    </definition>
+    <definition extends="default" name="registration/end-state">
+        <put-attribute name="body" value="/WEB-INF/views/registration/end-state.jspx"/>
     </definition>
 </tiles-definitions>

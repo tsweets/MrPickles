@@ -4,13 +4,23 @@
   <jsp:directive.page contentType="text/html;charset=UTF-8" />
   <jsp:output omit-xml-declaration="yes" />
   <spring:message var="title" code="webflow_state2_title" htmlEscape="false" />
+
+
     <h1>${fn:escapeXml(title)}</h1>
     <p>
       <spring:message code="webflow_state2_message" />
+
     </p>
+    <ol class="step-progress" data-step-progress-steps="3">
+        <li class="step-progress-done">Capture Data</li>
+        <li class="step-progress-done">Verify</li>
+        <li class="step-progress-todo">Done</li>
+    </ol>
+
+    <div style="margin-top:25px;"/>
       <form:form modelAttribute="newUser" action="${flowExecutionUrl}">
-          <div class="">
-              <table>
+          <div class="col-xs-offset-3 col-xs-3">
+              <table class="table">
                   <tr>
                       <td>First Name</td>
                       <td>${newUser.firstName}</td>
@@ -21,7 +31,7 @@
                   </tr>
                   <tr>
                       <td>Username</td>
-                      <td>${newUser.firstName}</td>
+                      <td>${newUser.userName}</td>
                   </tr>
                   <tr>
                       <td>DOB</td>
@@ -37,10 +47,23 @@
                   </tr>
               </table>
 
+              <div>
+                  <spring:message var="back" code="button_back" htmlEscape="false"/>
+                  <spring:message var="create" code="button_create" htmlEscape="false"/>
+                <span class="pull-right">
+                <input type="submit" class="btn btn-info btn-space" id="back" name="_eventId_back"
+                       value="${fn:escapeXml(back)}"/>
+                 <input type="submit" class="btn btn-info btn-space" id="create" name="_eventId_create"
+                        value="${fn:escapeXml(create)}"/>
+                </span>
+              </div>
           </div>
+<!--
       <div class="submit">
         <spring:message var="create" code="button_create" htmlEscape="false" />
         <input type="submit" id="create" name="_eventId_create" value="${fn:escapeXml(create)}" />
       </div>
+-->
+
     </form:form>
 </div>

@@ -37,12 +37,6 @@
         <img class="flag" src="${img}" alt="${fn:escapeXml(lang_label)}" />
     </a>
     </span>
+    <div class="pull-right"><small>sponsored by MrPickles</small><i class="flaticon-stripy"></i>
 
-  <spring:url value="/resources/images/springsource-logo.png" var="logo"/>
-  <spring:message code="global_sponsored" htmlEscape="false" var="sponsored"/>
-  <span>
-    <a href="http://springsource.com" title="${fn:escapeXml(sponsored)}">
-      <img align="right" alt="${fn:escapeXml(sponsored)}" src="${logo}"/>
-    </a>
-  </span>
-
+    </div>

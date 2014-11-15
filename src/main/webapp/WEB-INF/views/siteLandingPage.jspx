@@ -1,66 +1,77 @@
-
 <div xmlns:spring="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-  <jsp:directive.page contentType="text/html;charset=UTF-8" />
-  <jsp:output omit-xml-declaration="yes" />
-  <spring:message var="app_name" code="application_name" htmlEscape="false" />
-  <spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <spring:message var="app_name" code="application_name" htmlEscape="false"/>
+    <spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false"/>
+
     <h3>
-      <spring:message code="welcome_h3" arguments="${app_name}" />
+        <spring:message code="welcome_h3" arguments="${app_name}"/>
     </h3>
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-          <h1>Hello, world!</h1>
-          <p>This Web Application is my showcase and starter app I use to bootstrap new development projects. It uses modern frameworks, is self contained, and is
-          easy to deploy. There are two users set up. You can either login with admin/admin or user/user. Additionally you can also click on "Register" and create a new
-          user that can login to the application</p>
-          <p>--Tony Sweets</p>
-          <p>
-              <!-- Button to trigger modal -->
-              <a href="#myModal" role="button" class="btn" data-toggle="modal">Learn more &#187;</a>
-          </p>
-      </div>
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>Hello, world!</h1>
+
+        <p>This Web Application is my showcase and starter app I use to bootstrap new development projects. It uses modern frameworks, is self contained, and is
+            easy to deploy. There are two users set up. You can either login with admin/admin or user/user. Additionally you can also click on "Register" and create a new
+            user that can login to the application</p>
+
+        <p>--Tony Sweets</p>
+
+        <p>
+            <!-- Button to trigger modal -->
+            <a href="#myModal" role="button" class="btn btn-info" data-toggle="modal">Learn more &#187;</a>
+        </p>
+    </div>
     <p>
-      <p><h3><a href="/registration">New User - Register</a></h3></p>
-      <spring:message code="welcome_text" />
+        <p><h3><a href="/registration">New User - Register</a></h3></p>
+        <spring:message code="welcome_text"/>
     </p>
-    <p>Message Test: <a href="/?message=error">Show Error</a> | <a href="/?message=alert">Show Alert</a> | <a href="/?message=success">Show Success</a> | <a href="/?message=info">Show Info</a> | <a href="/?message=infoWithAction">Show Info w/Action</a></p>
+    <p>Message Test: <a href="/?message=danger">Show Danger</a> | <a href="/?message=warning">Show Warning</a> | <a
+            href="/?message=success">Show Success</a> | <a href="/?message=info">Show Info</a> | <a
+            href="/?message=infoWithAction">Show Info w/Action</a></p>
     <!-- Modal -->
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Features</h3>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Features</h3>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Spring Framework</li>
+                                    <li>Spring Data</li>
+                                    <li>Twitter Bootstrap</li>
+                                    <li>Maven Build/Deploy</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Apache Tiles</li>
+                                    <li>Hibernate JPA</li>
+                                    <li>Spring Security</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Spring MVC</li>
+                                    <li>Spring Web Flow</li>
+                                    <li>Some other cool things</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <table>
-                <tr>
-                    <td>
-                        <ul>
-                            <li>Spring Framework</li>
-                            <li>Spring Data</li>
-                            <li>Twitter Bootstrap</li>
-                            <li>Maven Build/Deploy</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li>Apache Tiles</li>
-                            <li>Hibernate JPA</li>
-                            <li>Spring Security</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li>Spring MVC</li>
-                            <li>Spring Web Flow</li>
-                            <li>Some other cool things</li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        </div>
+
     </div>
 
 </div>

@@ -5,14 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%--
-    <title><tiles:insertAttribute name="title" ignore="true"/></title>
---%>
+    <title><tiles:insertAttribute defaultValue="Client Portal" name="title"/></title>
     <meta charset="UTF-8">
     <spring:message code="application_name" var="app_name" htmlEscape="false"/>
     <title><spring:message code="welcome_h3" arguments="${app_name}" /></title>
-    <link rel="stylesheet" href="/resources/bootstrap/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/resources/css/theme.css"/>
+    <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/resources/less/theme.css"/>
+    <link rel="stylesheet" href="/resources/fonticons/flaticons/flaticon.css"/>
+    <link rel="stylesheet" href="/resources/fonticons/fontawesome/css/font-awesome.min.css"/>
+
+
 </head>
 <body>
 <!-- page -->
@@ -46,8 +48,9 @@
     </div>
 </footer>
 <!-- /footer -->
-<script type="text/javascript" src="/resources/js/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="/resources/bootstrap/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
+<%--
 <script type="text/javascript" src="/resources/js/jquery/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/resources/js/jquery/additional-methods.min.js"></script>
 <script type="text/javascript" src="/resources/js/jquery/jquery.validate.bootstrapfix.js"></script>
@@ -55,6 +58,7 @@
 <script type="text/javascript">
     $(document).ready( function() { $.ga.load("UA-XXXXXXXX-X"); } );
 </script>
+--%>
 
 </body>
 </html>

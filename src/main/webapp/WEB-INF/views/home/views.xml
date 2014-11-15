@@ -4,4 +4,8 @@
     <definition extends="sidenav" name="home/index">
         <put-attribute name="body" value="/WEB-INF/views/home/index.jsp"/>
     </definition>
+    <definition extends="sidenav" name="home/help">
+        <put-attribute name="body" value="/WEB-INF/views/home/help.jsp"/>
+    </definition>
+
 </tiles-definitions>

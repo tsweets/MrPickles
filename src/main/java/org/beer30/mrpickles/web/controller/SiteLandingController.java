@@ -26,12 +26,12 @@ public class SiteLandingController {
 		logger.info("Welcome to Mr Pickles - Home Page! The client locale is {}.", locale);
 
         if (message != null) {
-            if (message.equalsIgnoreCase("error")) {
-                model.addAttribute("error",true);
-                model.addAttribute("errorMessage","Oh Shit!");
-            } else if (message.equalsIgnoreCase("alert")) {
-                model.addAttribute("alert",true);
-                model.addAttribute("alertMessage","ALERT: Something is happening");
+            if (message.equalsIgnoreCase("danger")) {
+                model.addAttribute("danger",true);
+                model.addAttribute("dangerMessage","Oh Shit!");
+            } else if (message.equalsIgnoreCase("warning")) {
+                model.addAttribute("warning",true);
+                model.addAttribute("warningMessage","WARNING: Something is happening");
             } else if (message.equalsIgnoreCase("success")) {
                 model.addAttribute("success",true);
                 model.addAttribute("successMessage","Sweet! Whatever you were doing, it worked!");
@@ -51,5 +51,10 @@ public class SiteLandingController {
 		
 		return "homePage";
 	}
+
+    @RequestMapping(value = "/aboutPage", method = RequestMethod.GET)
+    public String about(@RequestParam(value = "message", required = false) String message, Locale locale, Model model) {
+        return "aboutPage";
+    }
 	
 }

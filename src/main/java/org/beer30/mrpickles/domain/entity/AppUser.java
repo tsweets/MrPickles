@@ -1,7 +1,7 @@
 package org.beer30.mrpickles.domain.entity;
 
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.beer30.mrpickles.domain.enums.UserStatus;
 import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
