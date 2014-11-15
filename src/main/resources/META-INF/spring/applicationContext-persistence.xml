@@ -81,7 +81,7 @@
     </bean>
 
     <context:annotation-config/>
-    <context:component-scan base-package="org.beer30.mrpickles.domain" />
+    <context:component-scan base-package="org.beer30.mrpickles.domain.entity" />
 
     <jpa:repositories base-package="org.beer30.mrpickles.domain.repository" entity-manager-factory-ref="emf" transaction-manager-ref="transactionManager" />
     <jpa:auditing auditor-aware-ref="auditorAwareBean"/>
